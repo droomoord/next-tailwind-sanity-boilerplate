@@ -12,7 +12,7 @@ const Layout = (props) => {
   return (
     <>
       <Navigation startLoading={() => setLoading(true)} />
-      {loading ? <Spinner /> : <div className="p-2">{props.children}</div>}
+      {loading ? <Spinner /> : props.children}
     </>
   );
 };

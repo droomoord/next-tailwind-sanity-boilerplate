@@ -1,17 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* 
-img {
-  opacity: 0;
-  animation-name: fade-in;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
-  animation-delay: 5s;
+
+@media only screen and (min-width: 600px) {
+  figure {
+    @apply w-3/4 self-center;
+  }
+  figure img {
+    @apply m-auto;
+  }
 }
 
-@keyframes fade-in {
-  to {
-    opacity: 1;
-  }
-} */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold text-center;
+}
+
+.block-content h1 {
+  @apply text-4xl;
+}
+.block-content h2 {
+  @apply text-3xl;
+}
+.block-content h3 {
+  @apply text-2xl;
+}
+.block-content h4 {
+  @apply text-xl;
+}
+.block-content h5 {
+  @apply text-lg;
+}
+.block-content h6 {
+  @apply text-base;
+}
+
+.block-content p {
+  @apply w-full lg:w-1/2 self-center;
+}
+
+.block-content a {
+  @apply text-gray-800 underline;
+}

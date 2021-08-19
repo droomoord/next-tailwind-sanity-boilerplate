@@ -5,14 +5,19 @@ const Navbar = ({ navItems, clicked }) => {
   const router = useRouter();
   const page = router.query.page;
   return (
-    <div className="z-1 relative">
+    <div className="w-screen h-20 bg-gray-100 flex justify-center items-center gap-10 fixed">
       {navItems.map((item) => {
-        return (
+        const active = item.slug === page;
+        return active ? (
+          <a
+            className="font-bold underline cursor-pointer uppercase"
+            key={item.slug}
+          >
+            {item.title}
+          </a>
+        ) : (
           <Link key={item.slug} href={item.slug}>
-            <a
-              className={item.slug === page ? "font-bold" : null}
-              onClick={clicked}
-            >
+            <a className="uppercase hover:underline" onClick={clicked}>
               {item.title}
             </a>
           </Link>

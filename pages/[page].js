@@ -21,7 +21,7 @@ export default function Home(props) {
       })
     : null;
   return (
-    <>
+    <div className="px-5 pt-5 md:px-10 md:pt-28">
       <Head>
         <title>Boiler Plate - {page.title}</title>
         {metatags}
@@ -29,13 +29,13 @@ export default function Home(props) {
 
       <LazyLoad>
         <BlockContent
-          className="flex flex-col"
+          className="block-content flex flex-col gap-10"
           blocks={page.body}
           projectId={projectId}
           dataset={dataset}
         ></BlockContent>
       </LazyLoad>
-    </>
+    </div>
   );
 }
 

@@ -13,14 +13,14 @@ const Drawer = ({ drawerItems, clicked, closeDrawer }) => {
     <div
       className={`h-screen w-screen bg-white m-0 pt-20 flex flex-col justify-start items-center gap-10 text-2xl fixed ${
         mounted ? "opacity-1" : "opacity-0"
-      } transition-opacity duration-500`}
+      } transition-opacity duration-300`}
     >
       {drawerItems.map((item) => {
         const active = item.slug === page;
         return active ? (
           <a
             onClick={closeDrawer}
-            className="font-bold underline"
+            className="font-bold underline cursor-pointer"
             key={item.slug}
           >
             {item.title}
