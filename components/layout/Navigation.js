@@ -25,12 +25,14 @@ const Navigation = ({ startLoading }) => {
     <>
       <nav>
         <div className="block md:hidden">
-          <button
-            className="border-2 border-black rounded p-1.5 bg-gray-100 m-2"
-            onClick={() => setDrawer(!drawer)}
-          >
-            {drawer ? <GrClose size="3em"></GrClose> : <FaBars size="3em" />}
-          </button>
+          <div className="w-screen flex justify-end">
+            <button
+              className="border-2 border-black rounded p-1.5 bg-gray-100 m-2"
+              onClick={() => setDrawer(!drawer)}
+            >
+              {drawer ? <GrClose size="2em"></GrClose> : <FaBars size="2em" />}
+            </button>
+          </div>
           {drawer && (
             <Drawer
               drawerItems={navItems}
