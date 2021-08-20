@@ -11,8 +11,8 @@ const Drawer = ({ drawerItems, clicked, closeDrawer }) => {
   }, []);
   return (
     <div
-      className={`h-screen w-screen bg-white m-0 pt-20 flex flex-col justify-start items-center gap-10 text-2xl fixed ${
-        mounted ? "opacity-1" : "opacity-0"
+      className={`h-screen w-screen bg-white m-0 pt-40 flex flex-col justify-start items-center gap-10 text-2xl fixed opacity-${
+        mounted ? "1" : "0"
       } transition-opacity duration-300`}
     >
       {drawerItems.map((item) => {

@@ -21,14 +21,17 @@ const Navigation = ({ startLoading }) => {
     if (drawer) setDrawer(false);
     startLoading();
   }
+  function clickHandler() {
+    setDrawer(!drawer);
+  }
   return (
     <>
       <nav>
         <div className="block md:hidden">
-          <div className="w-screen flex justify-end">
+          <div className="z-10 border-b-2 w-screen h-20 flex justify-end items-center fixed bg-white">
             <button
-              className="border-2 border-black rounded p-1.5 bg-gray-100 m-2"
-              onClick={() => setDrawer(!drawer)}
+              className="border-2 border-black rounded p-1.5 bg-gray-100 m-2 w-14 h-14 flex justify-center items-center"
+              onClick={clickHandler}
             >
               {drawer ? <GrClose size="2em"></GrClose> : <FaBars size="2em" />}
             </button>
@@ -37,7 +40,7 @@ const Navigation = ({ startLoading }) => {
             <Drawer
               drawerItems={navItems}
               clicked={clicked}
-              closeDrawer={() => setDrawer(false)}
+              closeDrawer={clickHandler}
             />
           )}
         </div>

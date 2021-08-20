@@ -17,17 +17,19 @@ const Page = ({ page }) => {
       })
     : null;
   return (
-    <div className="px-5 pt-5 md:px-10 md:pt-28">
+    <div className="px-5 pt-28 md:px-10">
       <Head>
         <title>Boiler Plate - {page.title}</title>
         {metatags}
       </Head>
-      <BlockContent
-        className="block-content flex flex-col gap-10"
-        blocks={page.body}
-        projectId={projectId}
-        dataset={dataset}
-      ></BlockContent>
+      <section>
+        <BlockContent
+          className="block-content flex flex-col gap-10"
+          blocks={page.body}
+          projectId={projectId}
+          dataset={dataset}
+        ></BlockContent>
+      </section>
     </div>
   );
 };
