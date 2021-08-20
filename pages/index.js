@@ -1,12 +1,14 @@
 import { fetchPage } from "../functions";
 import Page from "../components/layout/Page";
 
-export default function Home(props) {
+const index = (props) => {
   return <Page page={props.page} />;
-}
+};
 
-export async function getServerSideProps(context) {
-  const { data } = await fetchPage(context.params.page);
+export default index;
+
+export async function getServerSideProps() {
+  const { data } = await fetchPage("home");
 
   if (!data || data.length < 1) {
     return {
@@ -20,7 +22,7 @@ export async function getServerSideProps(context) {
 }
 
 // export async function getStaticProps(context) {
-//   const { data } = await fetchPage(context.params.page);
+//   const { data } = await fetchPage('home');
 
 //   if (!data || data.length < 1) {
 //     return {

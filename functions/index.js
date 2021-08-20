@@ -6,6 +6,7 @@ const urlString = `https://${projectId}.api.sanity.io/v1/data/query/${dataset}?q
 export async function fetchPage(page) {
   const query = encodeURIComponent(`*[_type == 'page' && slug == '${page}']`);
   const data = await fetch(urlString + query);
+
   if (data) {
     const json = await data.json();
     return {
