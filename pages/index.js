@@ -6,7 +6,7 @@ export default function dynamicPage({ page, pageTitles }) {
 }
 
 export async function getServerSideProps() {
-  const page = await fetchPage("/home");
+  const page = await fetchPage("home");
   if (!page.data || page.data.length < 1) {
     return {
       notFound: true,
