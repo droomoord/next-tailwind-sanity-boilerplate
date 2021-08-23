@@ -17,7 +17,7 @@ const Navbar = ({ navItems, clicked }) => {
             {item.title}
           </a>
         ) : (
-          <Link key={item.slug} href={item.slug}>
+          <Link key={item.slug} href={"/" + item.slug}>
             <a className="uppercase hover:underline" onClick={clicked}>
               {item.title}
             </a>

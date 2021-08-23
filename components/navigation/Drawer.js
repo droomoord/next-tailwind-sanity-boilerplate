@@ -26,7 +26,7 @@ const Drawer = ({ drawerItems, clicked, closeDrawer }) => {
             {item.title}
           </a>
         ) : (
-          <Link key={item.slug} href={item.slug}>
+          <Link key={item.slug} href={"/" + item.slug}>
             <a onClick={clicked}>{item.title}</a>
           </Link>
         );

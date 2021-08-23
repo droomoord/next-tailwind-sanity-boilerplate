@@ -1,21 +1,26 @@
-import { fetchPage } from "../functions";
+import { fetchPage, fetchPageTitles } from "../functions";
 import Page from "../components/layout/Page";
 
-export default function Home(props) {
-  return <Page page={props.page} />;
+export default function dynamicPage({ page, pageTitles }) {
+  return <Page page={page} pageTitles={pageTitles} />;
 }
 
 export async function getServerSideProps(context) {
-  const { data } = await fetchPage(context.params.page);
-
-  if (!data || data.length < 1) {
+  const page = await fetchPage(context.params.page);
+  if (!page.data || page.data.length < 1) {
     return {
       notFound: true,
     };
   }
-  const page = data[0];
+  const pageTitles = await fetchPageTitles();
+  if (!pageTitles.data || pageTitles.data.length < 1) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
-    props: { page },
+    props: { page: page.data[0], pageTitles: pageTitles.data },
   };
 }
 

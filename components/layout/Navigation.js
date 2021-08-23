@@ -3,20 +3,11 @@ import Drawer from "../navigation/Drawer";
 import { FaBars } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
 
-import { useEffect, useState } from "react";
-import { fetchPageTitles } from "../../functions";
+import { useState } from "react";
 
-const Navigation = ({ startLoading }) => {
-  const [navItems, setNavItems] = useState([]);
+const Navigation = ({ startLoading, pageTitles }) => {
   const [drawer, setDrawer] = useState(false);
 
-  useEffect(() => {
-    async function init() {
-      const { data } = await fetchPageTitles();
-      setNavItems(data);
-    }
-    init();
-  }, []);
   function clicked() {
     if (drawer) setDrawer(false);
     startLoading();
@@ -38,14 +29,14 @@ const Navigation = ({ startLoading }) => {
           </div>
           {drawer && (
             <Drawer
-              drawerItems={navItems}
+              drawerItems={pageTitles}
               clicked={clicked}
               closeDrawer={clickHandler}
             />
           )}
         </div>
         <div className="hidden md:block">
-          <Navbar navItems={navItems} clicked={clicked} />
+          <Navbar navItems={pageTitles} clicked={clicked} />
         </div>
       </nav>
     </>
