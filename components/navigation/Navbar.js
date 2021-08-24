@@ -10,12 +10,11 @@ const Navbar = ({ navItems, clicked }) => {
       {navItems.map((item) => {
         const active = item.slug === page || (item.slug === "home" && !page);
         return active ? (
-          <a
-            className="font-bold underline cursor-pointer uppercase"
-            key={item.slug}
-          >
-            {item.title}
-          </a>
+          <Link key={item.slug} href={"/" + item.slug}>
+            <a className="font-bold underline cursor-pointer uppercase">
+              {item.title}
+            </a>
+          </Link>
         ) : (
           <Link key={item.slug} href={"/" + item.slug}>
             <a className="uppercase hover:underline" onClick={clicked}>
