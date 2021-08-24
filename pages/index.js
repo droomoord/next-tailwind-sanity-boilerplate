@@ -4,7 +4,6 @@ import Page from "../components/layout/Page";
 export default function dynamicPage({ page, pageTitles }) {
   return (
     <div>
-      <h1>Let's create a landing page?</h1>
       <Page page={page} pageTitles={pageTitles} />
     </div>
   );

@@ -5,50 +5,56 @@ export default function dynamicPage({ page, pageTitles }) {
   return <Page page={page} pageTitles={pageTitles} />;
 }
 
-export async function getServerSideProps(context) {
+// export async function getServerSideProps(context) {
+//   const page = await fetchPage(context.params.page);
+//   if (!page.data || page.data.length < 1) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+//   const pageTitles = await fetchPageTitles();
+//   if (!pageTitles.data || pageTitles.data.length < 1) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+
+//   return {
+//     props: { page: page.data[0], pageTitles: pageTitles.data },
+//   };
+// }
+
+export async function getStaticProps(context) {
   const page = await fetchPage(context.params.page);
+
   if (!page.data || page.data.length < 1) {
     return {
       notFound: true,
     };
   }
+
   const pageTitles = await fetchPageTitles();
   if (!pageTitles.data || pageTitles.data.length < 1) {
     return {
       notFound: true,
     };
   }
-
   return {
     props: { page: page.data[0], pageTitles: pageTitles.data },
+    revalidate: 60,
   };
 }
 
-// export async function getStaticProps(context) {
-//   const { data } = await fetchPage(context.params.page);
-
-//   if (!data || data.length < 1) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-//   const page = data[0];
-//   return {
-//     props: { page },
-//     revalidate: 10,
-//   };
-// }
-
-// export async function getStaticPaths() {
-//   const { data } = await fetchPageTitles();
-//   return {
-//     paths: data.map((page) => {
-//       return {
-//         params: {
-//           page: page.slug,
-//         },
-//       };
-//     }),
-//     fallback: "blocking",
-//   };
-// }
+export async function getStaticPaths() {
+  const { data } = await fetchPageTitles();
+  return {
+    paths: data.map((page) => {
+      return {
+        params: {
+          page: page.slug,
+        },
+      };
+    }),
+    fallback: "blocking",
+  };
+}
